@@ -15,7 +15,7 @@ public class LevelChangerScript : MonoBehaviour
         int level = player.GetComponent<PlayerMovement>().getOnSceneEnter();
 
         if (Input.GetKeyDown("e") && level != 0)
-            FadeToLevel(level);   
+            FadeToLevel(level);
     }
 
     public void FadeToLevel(int levelIndex){
