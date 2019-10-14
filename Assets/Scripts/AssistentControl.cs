@@ -36,7 +36,7 @@ public class AssistentControl : MonoBehaviour
     }
     private void ShowKeys()
     {
-        DisplayMessage("Teclas - Tutorial - \n a, d - Andar \n espaço - Saltar \n up - Abrir Assistente \b down - Fechar Assistente");
+        DisplayMessage("Teclas\n======\n\n a, d - Andar \n espaço - Saltar \n up - Abrir Assistente \n down - Fechar Assistente");
     }
     private void ActivateAssistant()
     {
