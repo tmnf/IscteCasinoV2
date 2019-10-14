@@ -2,8 +2,6 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static int HOUSE = 1, CASINO = 2, ARCADE = 3;
-
     public float movementSpeed, jumpingForce;
     private bool isJumping;
     private float move;
@@ -57,19 +55,19 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("House"))
         {
             place = "em Casa";
-            sceneToEnter = HOUSE;
+            sceneToEnter = LevelChangerScript.HOUSE;
         }
         if (collision.gameObject.CompareTag("Casino"))
         {
             place = "no Casino";
-            sceneToEnter = CASINO;
+            sceneToEnter = LevelChangerScript.CASINO;
         }
         if (collision.gameObject.CompareTag("Arcade"))
         {
             place = "no Arcade";
-            sceneToEnter = ARCADE;
+            sceneToEnter = LevelChangerScript.ARCADE;
         }
-            
+
         textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "Pressione 'E' para entrar " + place;
     }
 

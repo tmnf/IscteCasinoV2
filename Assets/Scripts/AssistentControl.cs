@@ -32,7 +32,7 @@ public class AssistentControl : MonoBehaviour
     }
     private void ShowGameRules()
     {
-        
+
     }
     private void ShowKeys()
     {
