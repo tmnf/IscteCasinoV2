@@ -2,21 +2,18 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static int HOUSE = 1, CASINO = 2, ARCADE = 3;
 
     public float movementSpeed, jumpingForce;
     private bool isJumping;
     private float move;
 
+    private int sceneToEnter;
+
     public Rigidbody2D rb;
     public Animator animator;
     public Camera mainCamera;
     public GameObject textDisplay;
-
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -59,17 +56,32 @@ public class PlayerMovement : MonoBehaviour
     {
         string place = "";
         if (collision.gameObject.CompareTag("House"))
+        {
             place = "em Casa";
+            sceneToEnter = HOUSE;
+        }
         if (collision.gameObject.CompareTag("Casino"))
+        {
             place = "no Casino";
+            sceneToEnter = CASINO;
+        }
         if (collision.gameObject.CompareTag("Arcade"))
+        {
             place = "no Arcade";
-
-        textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "Pressione Enter para entrar " + place;
+            sceneToEnter = ARCADE;
+        }
+            
+        textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "Pressione 'E' para entrar " + place;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+        sceneToEnter = 0;
+    }
+
+    public int getOnSceneEnter()
+    {
+        return sceneToEnter;
     }
 }
