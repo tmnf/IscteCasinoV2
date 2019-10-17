@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 
 public class AssistentControl : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class AssistentControl : MonoBehaviour
     public GameObject assistantDisplay;
 
     public float speed, direction;
-    private bool opened, moving;
+    private bool opened, moving, monitor;
 
     private static float closedY = -11, openY = -4;
 
@@ -19,6 +20,9 @@ public class AssistentControl : MonoBehaviour
     {
         CheckMove();
         ListenCommands();
+
+        if (monitor)
+            MonitorPlayerMoney();
     }
 
     private void ListenCommands()
@@ -32,13 +36,19 @@ public class AssistentControl : MonoBehaviour
     }
     private void ShowGameRules()
     {
-
+        DisplayMessageOnScreen("Regras do Jogo", AssistantMessages.RULES, 0);
     }
     private void ShowKeys()
     {
-        DisplayMessage("Teclas\n======\n\n a, d - Andar \n espaço - Saltar \n up - Abrir Assistente \n down - Fechar Assistente");
+        DisplayMessageOnScreen("Teclas", AssistantMessages.KEYS, 0);
     }
     private void ActivateAssistant()
+    {
+        if (DisplayMessageOnScreen("Assistente", AssistantMessages.ASSISTANT, 1))
+            monitor = true;
+    }
+
+    private void MonitorPlayerMoney()
     {
 
     }
@@ -48,9 +58,23 @@ public class AssistentControl : MonoBehaviour
         assistantDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = msg;
     }
 
+    private bool DisplayMessageOnScreen(string title, string msg, int mode)
+    {
+        bool check = false;
+        if (mode == 0)
+            check = EditorUtility.DisplayDialog(title, msg, "OK");
+        else
+            check = EditorUtility.DisplayDialog(title, msg, "Sim", "Não");
+
+        direction = -1;
+        moving = true;
+
+        return check;
+    }
+
     private void DisplayMenu()
     {
-        DisplayMessage("Ambrósio Moedas \n 1 - Regras do jogo? \n 2 - Quais as Teclas? \n 3 - Ativar assistente monetário");
+        DisplayMessage(AssistantMessages.MENU);
     }
 
     private void CheckMove()
