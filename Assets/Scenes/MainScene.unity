@@ -163,6 +163,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6771340764323210756}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1086769905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 872621486867314834, guid: 30cf073f602dbb042ac8960d52c985c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 872621486064990870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2116381397
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 872621486867314832, guid: 30cf073f602dbb042ac8960d52c985c5,
         type: 3}
       propertyPath: orthographic size
-      value: 6.3128853
+      value: 6.417413
       objectReference: {fileID: 0}
     - target: {fileID: 872621486867314833, guid: 30cf073f602dbb042ac8960d52c985c5,
         type: 3}
@@ -432,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 872621486867314833, guid: 30cf073f602dbb042ac8960d52c985c5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 872621486867314833, guid: 30cf073f602dbb042ac8960d52c985c5,
         type: 3}
@@ -492,6 +498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166943299019525302, guid: ca50ee5884e7e844ca5d7b7af7a7dc62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1166943299019525300, guid: ca50ee5884e7e844ca5d7b7af7a7dc62,
         type: 3}
@@ -1331,6 +1342,16 @@ PrefabInstance:
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 177513437}
+    - target: {fileID: 8182023509650722143, guid: 4738c006397dd4b45a08d717d5c52738,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1086769905}
+    - target: {fileID: 8182023509650722143, guid: 4738c006397dd4b45a08d717d5c52738,
+        type: 3}
+      propertyPath: camObj
+      value: 
+      objectReference: {fileID: 1086769905}
     - target: {fileID: 8182023509650722140, guid: 4738c006397dd4b45a08d717d5c52738,
         type: 3}
       propertyPath: m_SortingLayerID
