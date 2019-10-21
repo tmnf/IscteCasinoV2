@@ -24,6 +24,5 @@ public class LevelGenerator : MonoBehaviour
             transform.position = new Vector3(transform.position.x + platformWidth + distanceBetweenPlat, transform.position.y, transform.position.z);
             Instantiate(platform, new Vector3(transform.position.x,transform.position.y - 2 + Random.Range(0f, 1f),0), transform.rotation);
         }
-        
     }
 }

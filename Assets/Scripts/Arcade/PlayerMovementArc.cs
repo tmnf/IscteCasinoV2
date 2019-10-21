@@ -10,7 +10,6 @@ public class PlayerMovementArc : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
-    public GameObject textDisplay;
 
     public GameObject camObj;
 
@@ -30,8 +29,8 @@ public class PlayerMovementArc : MonoBehaviour
         if (Input.GetKeyDown("space"))
             jump();
 
-        move = Input.GetAxisRaw("Horizontal") * movementSpeed;
-        animator.SetFloat("movement", move / movementSpeed);
+        move = Input.GetAxisRaw("Horizontal") * camObj.GetComponent<CameraMovement>().camSpeed * movementSpeed * 10;
+        animator.SetFloat("movement", move / camObj.GetComponent<CameraMovement>().camSpeed * movementSpeed * 10);
     }
 
     private void FixedUpdate()
