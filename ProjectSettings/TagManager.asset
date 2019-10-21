@@ -8,6 +8,7 @@ TagManager:
   - Casino
   - Arcade
   - Ground
+  - Platform
   layers:
   - Default
   - TransparentFX
