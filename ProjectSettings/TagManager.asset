@@ -9,6 +9,7 @@ TagManager:
   - Arcade
   - Ground
   - Platform
+  - LevelChanger
   layers:
   - Default
   - TransparentFX
