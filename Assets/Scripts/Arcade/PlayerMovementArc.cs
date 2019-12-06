@@ -8,6 +8,8 @@ public class PlayerMovementArc : MonoBehaviour
 
     private int sceneToEnter;
 
+    
+
     public Rigidbody2D rb;
     public Animator animator;
 

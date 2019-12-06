@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelChangerScript : MonoBehaviour
+public class LevelChangerArcade : MonoBehaviour
 {
     public static int MAIN = 0, HOUSE = 1, CASINO = 2, ARCADE = 3;
 
     public Animator animator;
     private GameObject player;
     private int levelToLoad;
-
-    private Scene currentScene;
 
     private void Awake()
     {
@@ -24,34 +22,22 @@ public class LevelChangerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentScene = SceneManager.GetActiveScene();
-        if(currentScene.buildIndex == 0){
-            player = GameObject.Find("Player");
-            switch (SceneManager.GetActiveScene().name)
-            {
-                case "MainScene":
-                    MainController();
-                    break;
-                case "CasinoScene":
-                    CasinoController();
-                    break;
-                case "ArcadeScene":
-                    ArcadeController();
-                    break;
-                case "HouseScene":
-                    HouseController();
-                    break;
-                default:
-                    break;
-            }
-        }else if(currentScene.buildIndex == 3){
-            player = GameObject.Find("Player");
-            if(player.transform.position.y < -7){
-                FadeToLevel(MAIN);
-            }
-            
-
-
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "MainScene":
+                MainController();
+                break;
+            case "CasinoScene":
+                CasinoController();
+                break;
+            case "ArcadeScene":
+                ArcadeController();
+                break;
+            case "HouseScene":
+                HouseController();
+                break;
+            default:
+                break;
         }
     }
 
