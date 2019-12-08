@@ -61,7 +61,7 @@ public class LevelChangerScript : MonoBehaviour
             FadeToLevel(level);
 
         else if (Input.GetKeyDown(KeyCode.Escape))
-            FadeToLevel(MAIN);
+            FadeToLevel(MENU);
     }
     private void CasinoController()
     {
