@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelChangerScript : MonoBehaviour
 {
-    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4;
+    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4, SLOT_MACHINE = 5;
 
     public Animator animator;
     private GameObject player;
@@ -37,10 +37,19 @@ public class LevelChangerScript : MonoBehaviour
             case "HouseScene":
                 HouseController();
                 break;
+            case "SlotMachine":
+                SlotMachineController();
+                break;
             default:
                 break;
         }
 
+    }
+
+    private void SlotMachineController()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            FadeToLevel(CASINO);
     }
 
     private void MainController()
@@ -75,6 +84,14 @@ public class LevelChangerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             FadeToLevel(MAIN);
     }
+
+    // Casino Methods
+
+    public void SlotMachineEnter()
+    {
+        FadeToLevel(SLOT_MACHINE);
+    }
+
 
     public void FadeToLevel(int levelIndex)
     {

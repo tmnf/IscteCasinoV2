@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         cam = Camera.main;
         height = 2f * cam.orthographicSize;
-        width = height * cam.aspect
+        width = height * cam.aspect;
     }
 
     void Update()
