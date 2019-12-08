@@ -18,7 +18,7 @@ public class CoinCollector : MonoBehaviour
         if (collision.gameObject.tag == "Coin")
         {
             collision.gameObject.SetActive(false);
-            scoreValue += 1
+            scoreValue += 1;
             setScore();
         }
 
