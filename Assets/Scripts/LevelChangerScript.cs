@@ -9,8 +9,6 @@ public class LevelChangerScript : MonoBehaviour
     private GameObject player;
     private int levelToLoad;
 
-    private Scene currentScene;
-
     private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("LevelChanger");
@@ -21,10 +19,9 @@ public class LevelChangerScript : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        currentScene = SceneManager.GetActiveScene();
+        Scene currentScene = SceneManager.GetActiveScene();
 
         switch (SceneManager.GetActiveScene().name)
         {
