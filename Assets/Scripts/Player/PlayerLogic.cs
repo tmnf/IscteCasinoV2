@@ -1,35 +1,102 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerLogic : MonoBehaviour
 {
-
     private int money;
     private float dayly_luck;
 
+
+    public GameObject assistant;
     public GameObject txt;
 
     void Start()
     {
         money = GetHeritage();
         dayly_luck = GetLuck();
+    }
 
-        txt.GetComponent<TMPro.TextMeshProUGUI>().text = "Money: " + money + "\nLuck: " + dayly_luck + "%";
+    private void FixedUpdate()
+    {
+        if (SceneManager.GetActiveScene().name.Equals("MainScene"))
+            txt.GetComponent<TMPro.TextMeshProUGUI>().text = "Money: " + money + "\nLuck: " + dayly_luck + "%";
+    }
+
+    private void SpendMoney(int moneySpent)
+    {
+        money -= moneySpent;
+        if (money <= 0)
+        {
+            GameOver();
+            return;
+        }
+
+        NotifyAssistant(moneySpent);
+    }
+
+    private void EarMoney(int moneyEarned)
+    {
+        money += moneyEarned;
+        NotifyAssistant(moneyEarned);
+    }
+
+    private void NotifyAssistant(int money)
+    {
+
+    }
+
+    private void GameOver()
+    {
+
     }
 
     private int GetHeritage()
     {
-        return Random.Range(5, 31);
+        return UniformInteger(5, 30);
     }
 
     private float GetLuck()
     {
-        return Random.Range(0, 101);
+        return Normal(50, 20);
     }
 
-    void Update()
+    //UTILS
+
+    public static int UniformInteger(double xMin, double xMax)
     {
-        
+        xMax += 1;
+        if (xMin < xMax)
+            return (int)(xMin + (xMax - xMin) * Random.value);
+        else
+            return 0;
     }
+
+    public static float Uniform(float xMin, float xMax)
+    {
+        if (xMin < xMax)
+            return xMin + (xMax - xMin) * Random.value;
+        else
+            return 0;
+    }
+
+    public static float Normal(float mean, float variance)
+    {
+
+        float p, p1, p2;
+
+        do
+        {
+            p1 = Uniform(-1, 1);
+            p2 = Uniform(-1, 1);
+            p = p1 * p1 + p2 * p2;
+        } while (p >= 1);
+
+        float res = mean + variance * p1 * Mathf.Sqrt(-2 * Mathf.Log(p) / p);
+
+        while (res < 0 || res > 100)
+            res = Normal(mean, variance);
+
+        return res;
+
+    }
+
 }

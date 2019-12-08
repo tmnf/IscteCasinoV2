@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlatformPositionCheck : MonoBehaviour
 {
@@ -24,18 +22,21 @@ public class PlatformPositionCheck : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!checkPosition()){
+        if (!checkPosition())
+        {
             Destroy(this.gameObject);
         }
-        
+
     }
 
 
     private bool checkPosition()
     {
-        if(transform.position.x > camObj.transform.position.x - (width / 2)){
+        if (transform.position.x > camObj.transform.position.x - (width / 2))
+        {
             return true;
-        }else
+        }
+        else
             return false;
 
     }

@@ -25,7 +25,8 @@ public class LevelChangerScript : MonoBehaviour
     void Update()
     {
         currentScene = SceneManager.GetActiveScene();
-        if(currentScene.buildIndex == 0){
+        if (currentScene.buildIndex == 0)
+        {
             player = GameObject.Find("Player");
             switch (SceneManager.GetActiveScene().name)
             {
@@ -44,12 +45,15 @@ public class LevelChangerScript : MonoBehaviour
                 default:
                     break;
             }
-        }else if(currentScene.buildIndex == 3){
+        }
+        else if (currentScene.buildIndex == 3)
+        {
             player = GameObject.Find("Player");
-            if(player.transform.position.y < -7){
+            if (player.transform.position.y < -7)
+            {
                 FadeToLevel(MAIN);
             }
-            
+
 
 
         }

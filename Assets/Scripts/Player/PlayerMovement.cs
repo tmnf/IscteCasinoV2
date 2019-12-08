@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     float height;
     float width;
 
-    void Start(){
+    void Start()
+    {
         cam = Camera.main;
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkPosition()
     {
-        if (transform.position.x > camObj.transform.position.x + (width/2) || transform.position.x < camObj.transform.position.x - (width/2))
+        if (transform.position.x > camObj.transform.position.x + (width / 2) || transform.position.x < camObj.transform.position.x - (width / 2))
             transform.position = new Vector3(-transform.position.x, transform.position.y + 0.5f);
     }
 

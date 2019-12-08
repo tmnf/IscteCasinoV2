@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
@@ -9,17 +7,18 @@ public class Coin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void CoinCollected(){
-        money+=1;
+    public void CoinCollected()
+    {
+        money += 1;
 
     }
 }

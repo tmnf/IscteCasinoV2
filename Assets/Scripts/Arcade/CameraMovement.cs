@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -12,8 +10,8 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -21,7 +19,7 @@ public class CameraMovement : MonoBehaviour
     {
         speedIncrement = Random.Range(0f, 0.0005f);
         camSpeed += speedIncrement;
-        movement = new Vector3 (camSpeed,0,0);
+        movement = new Vector3(camSpeed, 0, 0);
         cam.transform.position += movement;
 
     }

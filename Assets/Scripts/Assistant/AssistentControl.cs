@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 
 public class AssistentControl : MonoBehaviour
 {
@@ -61,10 +60,10 @@ public class AssistentControl : MonoBehaviour
     private bool DisplayMessageOnScreen(string title, string msg, int mode)
     {
         bool check = false;
-       // if (mode == 0)
-       //     check = EditorUtility.DisplayDialog(title, msg, "OK");
-       // else
-       //     check = EditorUtility.DisplayDialog(title, msg, "Sim", "Não");
+        // if (mode == 0)
+        //     check = EditorUtility.DisplayDialog(title, msg, "OK");
+        // else
+        //     check = EditorUtility.DisplayDialog(title, msg, "Sim", "Não");
 
         direction = -1;
         moving = true;
