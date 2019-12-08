@@ -15,9 +15,21 @@ public class PlayerLogic : MonoBehaviour
         dayly_luck = GetLuck();
     }
 
+    private void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("MainGameLogic");
+
+        if (objs.Length > 1)
+            Destroy(this.gameObject);
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void FixedUpdate()
     {
-        if (SceneManager.GetActiveScene().name.Equals("MainScene"))
+        txt = GameObject.Find("ML");
+
+        if (txt != null)
             txt.GetComponent<TMPro.TextMeshProUGUI>().text = "Money: " + money + "\nLuck: " + dayly_luck + "%";
     }
 

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelChangerScript : MonoBehaviour
 {
-    public static int MAIN = 0, HOUSE = 1, CASINO = 2, ARCADE = 3;
+    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4;
 
     public Animator animator;
     private GameObject player;
@@ -25,38 +25,25 @@ public class LevelChangerScript : MonoBehaviour
     void Update()
     {
         currentScene = SceneManager.GetActiveScene();
-        if (currentScene.buildIndex == 0)
+
+        switch (SceneManager.GetActiveScene().name)
         {
-            player = GameObject.Find("Player");
-            switch (SceneManager.GetActiveScene().name)
-            {
-                case "MainScene":
-                    MainController();
-                    break;
-                case "CasinoScene":
-                    CasinoController();
-                    break;
-                case "ArcadeScene":
-                    ArcadeController();
-                    break;
-                case "HouseScene":
-                    HouseController();
-                    break;
-                default:
-                    break;
-            }
+            case "MainScene":
+                MainController();
+                break;
+            case "CasinoScene":
+                CasinoController();
+                break;
+            case "ArcadeScene":
+                ArcadeController();
+                break;
+            case "HouseScene":
+                HouseController();
+                break;
+            default:
+                break;
         }
-        else if (currentScene.buildIndex == 3)
-        {
-            player = GameObject.Find("Player");
-            if (player.transform.position.y < -7)
-            {
-                FadeToLevel(MAIN);
-            }
 
-
-
-        }
     }
 
     private void MainController()
@@ -79,6 +66,12 @@ public class LevelChangerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             FadeToLevel(MAIN);
+
+        player = GameObject.Find("Player");
+        if (player.transform.position.y < -7)
+        {
+            FadeToLevel(MAIN);
+        }
     }
     private void HouseController()
     {
