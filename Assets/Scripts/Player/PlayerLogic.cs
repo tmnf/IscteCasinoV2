@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 public class PlayerLogic : MonoBehaviour
 {
-    private int money;
-    private float dayly_luck;
+    public int money;
+    public float dayly_luck;
 
-
-    public GameObject assistant;
     public GameObject txt;
 
     void Start()
@@ -41,19 +38,11 @@ public class PlayerLogic : MonoBehaviour
             GameOver();
             return;
         }
-
-        NotifyAssistant(moneySpent);
     }
 
     private void EarMoney(int moneyEarned)
     {
         money += moneyEarned;
-        NotifyAssistant(moneyEarned);
-    }
-
-    private void NotifyAssistant(int money)
-    {
-
     }
 
     private void GameOver()
