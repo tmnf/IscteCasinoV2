@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelChangerScript : MonoBehaviour
 {
-    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4, SLOT_MACHINE = 5;
+    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4, SLOT_MACHINE = 5, SPINING_WHEEL = 6;
 
     public Animator animator;
     private GameObject player;
