@@ -15,4 +15,14 @@ public class CasinoHandler : MonoBehaviour
         levelChanger.SlotMachineEnter();
     }
 
+    public void EnterSpinWheel()
+    {
+        levelChanger.SpinWheelEnter();
+    }
+
+    public void EnterGuessTheNumber()
+    {
+        levelChanger.GuessTheNumberEnter();
+    }
+
 }

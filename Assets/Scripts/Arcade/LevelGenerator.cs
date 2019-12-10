@@ -7,10 +7,9 @@ public class LevelGenerator : MonoBehaviour
 
     public GameObject coin;
     public Transform generationPoint;
+
     public float distanceBetweenPlat;
     private float platformWidth;
-
-    private int totalCoinsCreated = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +24,15 @@ public class LevelGenerator : MonoBehaviour
         if (transform.position.x < generationPoint.transform.position.x)
         {
             transform.position = new Vector3(transform.position.x + platformWidth + distanceBetweenPlat, transform.position.y, transform.position.z);
-            Instantiate(platform, new Vector3(transform.position.x, transform.position.y - 2 + Random.Range(0f, 1f), 0), transform.rotation);
+
+            float platform_y = transform.position.y - 2 + Random.Range(0f, 1f);
+
+            Instantiate(platform, new Vector3(transform.position.x, platform_y, 0), transform.rotation);
+
             int spawn = Random.Range(1, 1000);
             if (spawn < 300)
             {
-                Instantiate(coin, new Vector3(transform.position.x, transform.position.y - 1, 0), transform.rotation);
-                totalCoinsCreated += 1;
-                Debug.Log(totalCoinsCreated); //só para debug
+                Instantiate(coin, new Vector3(transform.position.x, platform_y + 0.5f, 0), transform.rotation);
             }
         }
     }

@@ -24,7 +24,6 @@ public class PlayerMovementArc : MonoBehaviour
         cam = Camera.main;
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;
-
     }
 
     void Update()
@@ -32,8 +31,8 @@ public class PlayerMovementArc : MonoBehaviour
         if (Input.GetKeyDown("space"))
             jump();
 
-        move = Input.GetAxisRaw("Horizontal") * camObj.GetComponent<CameraMovement>().camSpeed * movementSpeed * 7;
-        animator.SetFloat("movement", move / camObj.GetComponent<CameraMovement>().camSpeed * movementSpeed * 7);
+        move = Input.GetAxisRaw("Horizontal") * movementSpeed * 7;
+        animator.SetFloat("movement", move / movementSpeed * 7);
     }
 
     private void FixedUpdate()

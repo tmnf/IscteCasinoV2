@@ -3,11 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelChangerScript : MonoBehaviour
 {
-    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4, SLOT_MACHINE = 5, SPINING_WHEEL = 6;
+    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4, SLOT_MACHINE = 5, SPINING_WHEEL = 6, GUESS_NUMBER = 7;
 
     public Animator animator;
     private GameObject player;
     private int levelToLoad;
+
+    private PlayerLogic playerAtributes;
 
     private void Awake()
     {
@@ -91,12 +93,26 @@ public class LevelChangerScript : MonoBehaviour
     {
         FadeToLevel(SLOT_MACHINE);
     }
+    public void SpinWheelEnter()
+    {
+        FadeToLevel(SPINING_WHEEL);
+    }
+    public void GuessTheNumberEnter()
+    {
+        FadeToLevel(GUESS_NUMBER);
+    }
+
 
 
     public void FadeToLevel(int levelIndex)
     {
-        levelToLoad = levelIndex;
-        animator.SetTrigger("FadeOut");
+        playerAtributes = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
+
+        if (playerAtributes.CanEnter(levelIndex))
+        {
+            levelToLoad = levelIndex;
+            animator.SetTrigger("FadeOut");
+        }
     }
 
     public void OnFadeComplete()

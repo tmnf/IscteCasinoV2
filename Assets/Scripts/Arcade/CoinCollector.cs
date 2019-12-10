@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class CoinCollector : MonoBehaviour
 {
-    public Text score;
+    public GameObject score;
     private int scoreValue = 0;
 
     private PlayerLogic playerAtributes;
@@ -15,20 +14,20 @@ public class CoinCollector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        playerAtributes = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
+
         if (collision.gameObject.tag == "Coin")
         {
-            collision.gameObject.SetActive(false);
-            scoreValue += 1;
             setScore();
+            Destroy(collision.gameObject);
         }
-
-
-        // Podes remover dinheiro do player assim playerAtributes.money--;
-        // Podes adicionar dinheiro do player assim playerAtributes.money++;
     }
 
     void setScore()
     {
-        score.text = "Coins: " + scoreValue;
+        scoreValue += 1;
+        playerAtributes.money++;
+        SoundManagerScript.PlaySound("coin");
+        score.GetComponent<TMPro.TextMeshProUGUI>().text = "Moedas Apanhadas: " + scoreValue;
     }
 }

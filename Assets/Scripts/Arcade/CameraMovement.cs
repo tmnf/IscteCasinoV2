@@ -7,20 +7,26 @@ public class CameraMovement : MonoBehaviour
     public float camSpeed;
     public float speedIncrement;
     private Vector3 movement;
-    // Start is called before the first frame update
+    private float initial_x;
     void Start()
     {
-
-
+        initial_x = GameObject.Find("Player").transform.position.x;
+        camSpeed += speedIncrement;
+        movement = new Vector3(camSpeed, 0, 0);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        speedIncrement = Random.Range(0f, 0.0005f);
-        camSpeed += speedIncrement;
-        movement = new Vector3(camSpeed, 0, 0);
-        cam.transform.position += movement;
+        float curr_x = GameObject.Find("Player").transform.position.x;
 
+        if (curr_x - initial_x >= 10 && camSpeed <= 0.06f)
+        {
+            camSpeed += speedIncrement;
+            initial_x = curr_x;
+            movement = new Vector3(camSpeed, 0, 0);
+        }
+
+        cam.transform.position += movement;
     }
 }

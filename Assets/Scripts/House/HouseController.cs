@@ -2,13 +2,28 @@
 
 public class HouseController : MonoBehaviour
 {
-    private GameObject bt1, bt2, bt3, bt4;
-    void Start()
+    private LevelChangerScript levelChanger;
+    private PlayerLogic playerLogic;
+    private void Start()
     {
-        bt1 = GameObject.Find("bt1");
-        bt2 = GameObject.Find("bt2");
-        bt3 = GameObject.Find("bt3");
-        bt4 = GameObject.Find("bt4");
+        levelChanger = GameObject.Find("LevelChanger").GetComponent<LevelChangerScript>();
+        playerLogic = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
+    }
+
+
+    public void SaveGame()
+    {
+        levelChanger.SlotMachineEnter();
+    }
+
+    public void Sleep()
+    {
+        playerLogic.dayly_luck = playerLogic.GetLuck();
+        playerLogic.curr_day++;
+        playerLogic.money -= 2;
+        SoundManagerScript.PlaySound("cashout");
+
+        levelChanger.FadeToLevel(LevelChangerScript.MAIN);
     }
 
 }

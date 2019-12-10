@@ -2,6 +2,7 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+
     public float movementSpeed, jumpingForce;
     private bool isJumping;
     private float move;
@@ -21,17 +22,26 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        height = 2f * cam.orthographicSize;
-        width = height * cam.aspect;
+        this.height = 2f * cam.orthographicSize;
+        width = this.height * cam.aspect;
+
+        if (GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>().height != null)
+        {
+            transform.localScale += GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>().height;
+            transform.localScale += GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>().wheight;
+        }
     }
 
     void Update()
     {
+
         if (Input.GetKeyDown("space"))
             jump();
 
         move = Input.GetAxisRaw("Horizontal") * movementSpeed;
         animator.SetFloat("movement", move / movementSpeed);
+
+
     }
 
     private void FixedUpdate()
@@ -67,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string place = "";
+        int price = 0;
         if (collision.gameObject.CompareTag("House"))
         {
             place = "em Casa";
@@ -75,21 +86,26 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Casino"))
         {
             place = "no Casino";
+            price = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>().casino_entrance;
             sceneToEnter = LevelChangerScript.CASINO;
         }
         if (collision.gameObject.CompareTag("Arcade"))
         {
             place = "no Arcade";
+            price = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>().arcade_price;
             sceneToEnter = LevelChangerScript.ARCADE;
         }
 
-        textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "Pressione 'E' para entrar " + place;
+        if (price == 0)
+            textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "Pressione 'E' para entrar " + place;
+        else
+            textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "Pressione 'E' para entrar " + place + ". Custo: " + price + " moedas";
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = "";
-        sceneToEnter = 0;
+        sceneToEnter = LevelChangerScript.MAIN;
     }
 
     public int getOnSceneEnter()
