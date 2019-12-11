@@ -8,42 +8,45 @@ public class GameControl : MonoBehaviour
 
     public static event Action HandlePulled = delegate { };
 
-    public Text prizeText;
-
-    public Row[] rows;
+    private Row rowScript1, rowScript2, rowScript3;
+    public GameObject row1, row2, row3;
 
     public Transform handle;
 
-    private int prizeValue;
-
     public GameObject money, prize;
 
-    private bool resultsChecked = false;
-
-
-    void Update()
+    private PlayerLogic playerLogic;
+    private void Start()
     {
-        if (!rows[0].rowStopped || !rows[1].rowStopped || !rows[2].rowStopped)
-        {
-            prizeValue = 0;
-            resultsChecked = false;
-        }
+        rowScript1 = row1.GetComponent<Row>();
+        rowScript2 = row2.GetComponent<Row>();
+        rowScript3 = row3.GetComponent<Row>();
 
-        if (rows[0].rowStopped && rows[1].rowStopped && rows[2].rowStopped && !resultsChecked)
-        {
-            CheckResults();
-            prize.GetComponent<TMPro.TextMeshProUGUI>().text = "Premio: " + prizeValue;
-        }
+        playerLogic = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
+        money.GetComponent<TMPro.TextMeshProUGUI>().text = "Moedas: " + playerLogic.money;
     }
 
+    private void setCoins()
+    {
+        playerLogic.money--;
+        SoundManagerScript.PlaySound("cashout");
+        money.GetComponent<TMPro.TextMeshProUGUI>().text = "Moedas: "+ playerLogic.money;
+    }
 
     private void OnMouseDown()
     {
-        if (rows[0].rowStopped || rows[1].rowStopped || rows[2].rowStopped)
+        if (rowScript1.rowStopped || rowScript2.rowStopped || rowScript3.rowStopped)
         {
+            setCoins();
+            prize.GetComponent<TMPro.TextMeshProUGUI>().text = "";
             StartCoroutine("PullHandle");
         }
+    }
 
+    private void FixedUpdate()
+    {
+        if (rowScript1.rowStopped && rowScript2.rowStopped && rowScript3.rowStopped && rowScript1.started)
+            CheckResults();
     }
 
     private IEnumerator PullHandle()
@@ -65,43 +68,12 @@ public class GameControl : MonoBehaviour
 
     private void CheckResults()
     {
-
-        if (rows[0].stoppedSlot == "Diamond" && rows[1].stoppedSlot == "Diamond" && rows[2].stoppedSlot == "Diamond")
+        if (rowScript1.stoppedSlot == rowScript2.stoppedSlot && rowScript2.stoppedSlot == rowScript3.stoppedSlot)
         {
-            prizeValue = 200;
+            SoundManagerScript.PlaySound("coin");
+            rowScript1.started = false;
+
+            prize.GetComponent<TMPro.TextMeshProUGUI>().text = "Premio: 100 Moedas";
         }
-
-        else if (rows[0].stoppedSlot == "Crown" && rows[1].stoppedSlot == "Crown" && rows[2].stoppedSlot == "Crown")
-        {
-            prizeValue = 400;
-        }
-
-        else if (rows[0].stoppedSlot == "Melon" && rows[1].stoppedSlot == "Melon" && rows[2].stoppedSlot == "Melon")
-        {
-            prizeValue = 600;
-        }
-
-        else if (rows[0].stoppedSlot == "Bar" && rows[1].stoppedSlot == "Bar" && rows[2].stoppedSlot == "Bar")
-        {
-            prizeValue = 800;
-        }
-
-        else if (rows[0].stoppedSlot == "Seven" && rows[1].stoppedSlot == "Seven" && rows[2].stoppedSlot == "Seven")
-        {
-            prizeValue = 1500;
-        }
-
-        else if (rows[0].stoppedSlot == "Cherry" && rows[1].stoppedSlot == "Cherry" && rows[2].stoppedSlot == "Cherry")
-        {
-            prizeValue = 3000;
-        }
-
-        else if (rows[0].stoppedSlot == "Lemon" && rows[1].stoppedSlot == "Lemon" && rows[2].stoppedSlot == "Lemon")
-        {
-            prizeValue = 5000;
-        }
-
-        resultsChecked = true;
-
     }
 }

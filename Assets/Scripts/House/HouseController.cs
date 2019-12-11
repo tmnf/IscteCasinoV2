@@ -10,17 +10,12 @@ public class HouseController : MonoBehaviour
         playerLogic = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
     }
 
-
-    public void SaveGame()
-    {
-        levelChanger.SlotMachineEnter();
-    }
-
     public void Sleep()
     {
         playerLogic.dayly_luck = playerLogic.GetLuck();
         playerLogic.curr_day++;
         playerLogic.money -= 2;
+       
         SoundManagerScript.PlaySound("cashout");
 
         levelChanger.FadeToLevel(LevelChangerScript.MAIN);

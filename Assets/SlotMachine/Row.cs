@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class Row : MonoBehaviour
 {
-
-    private int randomValue;
-    private float timeInterval;
-    public bool rowStopped;
-    public string stoppedSlot;
+    public bool rowStopped, started;
+    public int stoppedSlot;
 
     private PlayerLogic playerLogic;
+
+    public Sprite diamond, crown, melon, bar, seven, cherry;
 
     void Start()
     {
@@ -20,109 +19,57 @@ public class Row : MonoBehaviour
 
     private void StartRotating()
     {
-        stoppedSlot = "";
+        stoppedSlot = 0;
         StartCoroutine("Rotate");
     }
 
     private IEnumerator Rotate()
     {
         rowStopped = false;
-        timeInterval = 0.025f;
+        started = true;
 
-        for (int i = 0; i < 30; i++)
+
+        int i = 0;
+        int max = Random.Range(10, 50);
+        for (int x = 0; x != max; x++)
         {
-            Debug.Log(transform.position.y);
-            if (transform.position.y <= -1.35f)
+            GetComponent<SpriteRenderer>().sprite = getSprite(i);
+            stoppedSlot = i;
+            i++;
+
+            if (playerLogic.dayly_luck >= 80)
             {
-                transform.position = new Vector2(transform.position.x, 3.75f);
+                if (i == 3)
+                    i = 0;
             }
-
-            transform.position = new Vector2(transform.position.x, transform.position.y - 0.25f);
-
-            yield return new WaitForSeconds(timeInterval);
-
-        }
-
-        randomValue = Random.Range(60, 100);
-
-        switch (randomValue % 3)
-        {
-            case 1:
-                randomValue += 2;
-                break;
-            case 2:
-                randomValue += 1;
-                break;
-        }
-
-        for (int i = 0; i < randomValue; i++)
-        {
-            if (transform.position.y <= -1.35)
+            else
             {
-                transform.position = new Vector2(transform.position.x, 3.5f);
+                if (i == 6)
+                    i = 0;
             }
-
-            transform.position = new Vector2(transform.position.x, transform.position.y - 0.25f);
-
-            if (i > Mathf.RoundToInt(randomValue * 0.25f))
-            {
-                timeInterval = 0.05f;
-            }
-
-            if (i > Mathf.RoundToInt(randomValue * 0.5f))
-            {
-                timeInterval = 0.1f;
-            }
-
-            if (i > Mathf.RoundToInt(randomValue * 0.75f))
-            {
-                timeInterval = 0.15f;
-            }
-
-            if (i > Mathf.RoundToInt(randomValue * 0.95f))
-            {
-                timeInterval = 0.2f;
-            }
-
-            yield return new WaitForSeconds(timeInterval);
-
+            
+            yield return new WaitForSeconds(0.1f);
         }
-
-        string[] simbols = { "Diamond", "Crown", "Melon", "Bar", "Seven", "Cherry" };
-        string[] simbols_luck = { "Diamond", "Crown", "Melon", "Melon", "Crown", "Diamond" };
-
-        string[] listOfSimbols = simbols;
-        // if (playerLogic.dayly_luck >= 80)
-        //   listOfSimbols = simbols_luck;
-
-        if (transform.position.y == -1.75f)
-        {
-            stoppedSlot = listOfSimbols[0];
-        }
-        else if (transform.position.y == -1f)
-        {
-            stoppedSlot = listOfSimbols[1];
-        }
-        else if (transform.position.y == -0.25f)
-        {
-            stoppedSlot = listOfSimbols[2];
-        }
-        else if (transform.position.y == 0.5)
-        {
-            stoppedSlot = listOfSimbols[3];
-        }
-        else if (transform.position.y == 1.25)
-        {
-            stoppedSlot = listOfSimbols[4];
-        }
-        else if (transform.position.y == 2)
-        {
-            stoppedSlot = listOfSimbols[5];
-        }
-
-        Debug.Log(stoppedSlot);
 
         rowStopped = true;
+    }
+
+
+    private Sprite getSprite(int i)
+    {
+        if (i == 0)
+            return diamond;
+        if (i == 1)
+            return crown;
+        if (i == 2)
+            return melon;
+        if (i == 3)
+            return bar;
+        if (i == 4)
+            return seven;
+        if (i == 5)
+            return cherry;
+        return diamond;
     }
 
     private void onDestroy()

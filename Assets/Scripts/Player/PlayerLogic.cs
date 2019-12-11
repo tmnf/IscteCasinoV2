@@ -100,7 +100,11 @@ public class PlayerLogic : MonoBehaviour
 
         // CHEAT APAGARRRR
         if (Input.GetKeyDown("p"))
+        {
             money += 199;
+            dayly_luck += 10;
+        }
+            
 
         if (moneyText != null && luckText != null)
         {
