@@ -42,6 +42,12 @@ public class LevelChangerScript : MonoBehaviour
             case "SlotMachine":
                 SlotMachineController();
                 break;
+            case "SpinWheel":
+                SlotMachineController();
+                break;
+            case "GuessTheNumber":
+                SlotMachineController();
+                break;
             default:
                 break;
         }

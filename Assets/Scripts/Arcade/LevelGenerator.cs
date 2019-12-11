@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         platformWidth = platform.GetComponent<BoxCollider2D>().size.x;
-
+        SoundManagerScript.PlaySound("arcade");
     }
 
     // Update is called once per frame

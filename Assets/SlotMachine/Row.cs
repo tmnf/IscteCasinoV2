@@ -92,8 +92,8 @@ public class Row : MonoBehaviour
         string[] simbols_luck = { "Diamond", "Crown", "Melon", "Melon", "Crown", "Diamond" };
 
         string[] listOfSimbols = simbols;
-       // if (playerLogic.dayly_luck >= 80)
-         //   listOfSimbols = simbols_luck;
+        // if (playerLogic.dayly_luck >= 80)
+        //   listOfSimbols = simbols_luck;
 
         if (transform.position.y == -1.75f)
         {

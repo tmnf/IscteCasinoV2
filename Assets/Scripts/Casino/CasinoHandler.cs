@@ -7,6 +7,7 @@ public class CasinoHandler : MonoBehaviour
     private void Start()
     {
         levelChanger = GameObject.Find("LevelChanger").GetComponent<LevelChangerScript>();
+        SoundManagerScript.PlaySound("casino");
     }
 
 

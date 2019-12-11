@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerLogic : MonoBehaviour
 {
     public static int LOW = 0, NORMAL = 1, HIGH = 2;
@@ -17,7 +18,7 @@ public class PlayerLogic : MonoBehaviour
         money = GetHeritage();
         dayly_luck = GetLuck();
 
-        casino_entrance = UniformInteger(money, money + 10);
+        casino_entrance = Algorithms.UniformInteger(money, money + 10);
         arcade_price = 1;
         curr_day = 1;
     }
@@ -55,8 +56,11 @@ public class PlayerLogic : MonoBehaviour
     {
         if (scene == LevelChangerScript.CASINO && money > casino_entrance)
         {
-            money -= casino_entrance;
-            SoundManagerScript.PlaySound("cashout");
+            if (SceneManager.GetActiveScene().name != "GuessTheNumber" && SceneManager.GetActiveScene().name != "SlotMachine" && SceneManager.GetActiveScene().name != "SpinWheel")
+            {
+                money -= casino_entrance;
+                SoundManagerScript.PlaySound("cashout");
+            }
             return true;
         }
 
@@ -69,8 +73,11 @@ public class PlayerLogic : MonoBehaviour
         }
 
         if (scene != LevelChangerScript.ARCADE && scene != LevelChangerScript.CASINO)
+        {
+            if (scene == LevelChangerScript.MAIN)
+                SoundManagerScript.Stop();
             return true;
-
+        }
 
         return false;
     }
@@ -90,6 +97,10 @@ public class PlayerLogic : MonoBehaviour
         moneyText = GameObject.Find("Money");
         luckText = GameObject.Find("Luck");
         currDayText = GameObject.Find("Day");
+
+        // CHEAT APAGARRRR
+        if (Input.GetKeyDown("p"))
+            money += 199;
 
         if (moneyText != null && luckText != null)
         {
@@ -117,52 +128,12 @@ public class PlayerLogic : MonoBehaviour
 
     private int GetHeritage()
     {
-        return UniformInteger(5, 30);
+        return Algorithms.UniformInteger(5, 30);
     }
 
     public float GetLuck()
     {
-        return Normal(50, 20);
-    }
-
-    //UTILS
-
-    public static int UniformInteger(double xMin, double xMax)
-    {
-        xMax += 1;
-        if (xMin < xMax)
-            return (int)(xMin + (xMax - xMin) * Random.value);
-        else
-            return 0;
-    }
-
-    public static float Uniform(float xMin, float xMax)
-    {
-        if (xMin < xMax)
-            return xMin + (xMax - xMin) * Random.value;
-        else
-            return 0;
-    }
-
-    public static float Normal(float mean, float variance)
-    {
-
-        float p, p1, p2;
-
-        do
-        {
-            p1 = Uniform(-1, 1);
-            p2 = Uniform(-1, 1);
-            p = p1 * p1 + p2 * p2;
-        } while (p >= 1);
-
-        float res = mean + variance * p1 * Mathf.Sqrt(-2 * Mathf.Log(p) / p);
-
-        while (res < 0 || res > 100)
-            res = Normal(mean, variance);
-
-        return res;
-
+        return Algorithms.Normal(50, 20);
     }
 
 }
