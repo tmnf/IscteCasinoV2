@@ -3,26 +3,14 @@ using UnityEngine.UI;
 
 public class Needle : MonoBehaviour
 {
-    public Spinner _spinner;
-    public Text scoretext;
-    // Use this for initialization
-    void Start()
-    {
+    public Spinner spinner;
 
+    public string colide;
+   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        colide = collision.gameObject.name;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void OnTriggerStay2D(Collider2D col)
-    {
-        if (!_spinner.isStoped)
-            return;
-        scoretext.text = col.gameObject.name;
-
-    }
 
 }
