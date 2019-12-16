@@ -39,7 +39,6 @@ public class PlayerMovementArc : MonoBehaviour
     {
         transform.position += new Vector3(move * Time.deltaTime, 0f, 0f);
         checkPosition();
-
     }
 
 

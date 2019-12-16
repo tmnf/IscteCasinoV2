@@ -30,7 +30,7 @@ public class Row : MonoBehaviour
 
 
         int i = 0;
-        int max = Random.Range(10, 50);
+        int max = Random.Range(40, 100);
         for (int x = 0; x != max; x++)
         {
             GetComponent<SpriteRenderer>().sprite = getSprite(i);
@@ -47,7 +47,7 @@ public class Row : MonoBehaviour
                 if (i == 6)
                     i = 0;
             }
-            
+
             yield return new WaitForSeconds(0.1f);
         }
 

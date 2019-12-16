@@ -4,7 +4,7 @@
 public class SoundManagerScript : MonoBehaviour
 {
 
-    public static AudioClip bird1, bird2, bird3, coin, cashout, casino, arcade;
+    public static AudioClip bird1, bird2, bird3, coin, cashout, casino, arcade, sad, happy, slot;
     private static AudioSource audioSource;
 
     private void Awake()
@@ -25,6 +25,9 @@ public class SoundManagerScript : MonoBehaviour
         cashout = Resources.Load<AudioClip>("Sounds/CashOut");
         casino = Resources.Load<AudioClip>("Sounds/casino");
         arcade = Resources.Load<AudioClip>("Sounds/arcade");
+        happy = Resources.Load<AudioClip>("Sounds/robot_happy");
+        sad = Resources.Load<AudioClip>("Sounds/robot_sad");
+        slot = Resources.Load<AudioClip>("Sounds/slotMachine");
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -53,6 +56,15 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "arcade":
                 audioSource.PlayOneShot(arcade);
+                break;
+            case "sad":
+                audioSource.PlayOneShot(sad);
+                break;
+            case "happy":
+                audioSource.PlayOneShot(happy);
+                break;
+            case "slot":
+                audioSource.PlayOneShot(slot);
                 break;
         }
     }

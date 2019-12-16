@@ -5,18 +5,22 @@ public class PlayerLogic : MonoBehaviour
     public static int LOW = 0, NORMAL = 1, HIGH = 2;
 
     public int money, casino_entrance, arcade_price, curr_day;
-    public float dayly_luck;
+    public float dayly_luck, day_light, lastTimeChecked;
 
     public Vector3 height, wheight;
 
-    private bool first;
+    private bool first, raising;
 
     public GameObject moneyText, luckText, currDayText;
 
     void Start()
     {
+        day_light = 255;
+        lastTimeChecked = Time.realtimeSinceStartup;
         money = GetHeritage();
         dayly_luck = GetLuck();
+
+        GameObject.Find("mainDisplayText").GetComponent<TMPro.TextMeshProUGUI>().text = "Apos o seu tio falecer, voce herdou " + money + " moedas...";
 
         casino_entrance = Algorithms.UniformInteger(money, money + 10);
         arcade_price = 1;
@@ -104,7 +108,44 @@ public class PlayerLogic : MonoBehaviour
             money += 199;
             dayly_luck += 10;
         }
-            
+
+
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            SpriteRenderer sr = GameObject.Find("Background").GetComponent<SpriteRenderer>();
+            SpriteRenderer sr2 = GameObject.Find("bg1").GetComponent<SpriteRenderer>();
+
+
+            if (Time.realtimeSinceStartup - lastTimeChecked > 5f)
+            {
+                if (raising)
+                    day_light += 10;
+                else day_light -= 10;
+
+                if (day_light == 255 && raising)
+                    raising = false;
+                else if (day_light <= 15 && !raising)
+                {
+                    raising = true;
+                    money -= 2;
+                    curr_day++;
+                    dayly_luck = GetLuck();
+                    SoundManagerScript.PlaySound("cashout");
+                }
+
+
+                float value = day_light / 255;
+                float value2 = (day_light + 5) / 255;
+
+                if (sr != null && sr2 != null)
+                {
+                    sr.color = new Color(value, value, value);
+                    sr2.color = new Color(value2, value2, value2);
+                }
+
+                lastTimeChecked = Time.realtimeSinceStartup;
+            }
+        }
 
         if (moneyText != null && luckText != null)
         {

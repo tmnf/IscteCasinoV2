@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
@@ -30,7 +29,8 @@ public class GameControl : MonoBehaviour
     {
         playerLogic.money--;
         SoundManagerScript.PlaySound("cashout");
-        money.GetComponent<TMPro.TextMeshProUGUI>().text = "Moedas: "+ playerLogic.money;
+        SoundManagerScript.PlaySound("slot");
+        money.GetComponent<TMPro.TextMeshProUGUI>().text = "Moedas: " + playerLogic.money;
     }
 
     private void OnMouseDown()

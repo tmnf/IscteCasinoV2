@@ -19,9 +19,6 @@ public class AssistentControl : MonoBehaviour
     {
         CheckMove();
         ListenCommands();
-
-        if (monitor)
-            MonitorPlayerMoney();
     }
 
     private void ListenCommands()
@@ -35,21 +32,28 @@ public class AssistentControl : MonoBehaviour
     }
     private void ShowGameRules()
     {
-        DisplayMessageOnScreen("Regras do Jogo", AssistantMessages.RULES, 0);
+        DisplayMessageOnScreen(AssistantMessages.RULES);
     }
     private void ShowKeys()
     {
-        DisplayMessageOnScreen("Teclas", AssistantMessages.KEYS, 0);
+        DisplayMessageOnScreen(AssistantMessages.KEYS);
     }
     private void ActivateAssistant()
     {
-        if (DisplayMessageOnScreen("Assistente", AssistantMessages.ASSISTANT, 1))
-            monitor = true;
-    }
+        AssistantHelp ah = GameObject.Find("MainGameLogic").GetComponent<AssistantHelp>();
 
-    private void MonitorPlayerMoney()
-    {
-
+        if (!ah.activated)
+        {
+            DisplayMessageOnScreen("Assistente Monetario Ativado");
+            ah.activated = true;
+            SoundManagerScript.PlaySound("happy");
+        }
+        else
+        {
+            DisplayMessageOnScreen("Assistente Monetario Desactivado");
+            ah.activated = false;
+            SoundManagerScript.PlaySound("sad");
+        }
     }
 
     private void DisplayMessage(string msg)
@@ -57,18 +61,12 @@ public class AssistentControl : MonoBehaviour
         assistantDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = msg;
     }
 
-    private bool DisplayMessageOnScreen(string title, string msg, int mode)
+    private void DisplayMessageOnScreen(string msg)
     {
-        bool check = false;
-        // if (mode == 0)
-        //     check = EditorUtility.DisplayDialog(title, msg, "OK");
-        // else
-        //     check = EditorUtility.DisplayDialog(title, msg, "Sim", "Não");
+        GameObject.Find("mainDisplayText").GetComponent<TMPro.TextMeshProUGUI>().text = msg;
 
         direction = -1;
         moving = true;
-
-        return check;
     }
 
     private void DisplayMenu()

@@ -15,7 +15,7 @@ public class HouseController : MonoBehaviour
         playerLogic.dayly_luck = playerLogic.GetLuck();
         playerLogic.curr_day++;
         playerLogic.money -= 2;
-       
+
         SoundManagerScript.PlaySound("cashout");
 
         levelChanger.FadeToLevel(LevelChangerScript.MAIN);

@@ -11,6 +11,8 @@ public class LevelGenerator : MonoBehaviour
     public float distanceBetweenPlat;
     private float platformWidth;
 
+    private float change;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,10 @@ public class LevelGenerator : MonoBehaviour
             transform.position = new Vector3(transform.position.x + platformWidth + distanceBetweenPlat, transform.position.y, transform.position.z);
 
             float platform_y = transform.position.y - 2 + Random.Range(0f, 1f);
+
+            platform.transform.localScale += new Vector3(-change, 0, 0);
+            change = Algorithms.Uniform(-1.5f, 0f);
+            platform.transform.localScale += new Vector3(change, 0, 0);
 
             Instantiate(platform, new Vector3(transform.position.x, platform_y, 0), transform.rotation);
 

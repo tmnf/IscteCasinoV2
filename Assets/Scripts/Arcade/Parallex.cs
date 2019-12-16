@@ -7,12 +7,10 @@ public class Parallex : MonoBehaviour
     public GameObject cam;
     public float parallaxEffect;
 
-    // Start is called before the first frame update
     void Start()
     {
         startpos = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
-
     }
 
     // Update is called once per frame
@@ -26,7 +24,7 @@ public class Parallex : MonoBehaviour
         if (temp > startpos + length)
             startpos += length;
         else
-                if (temp < startpos - length)
+            if (temp < startpos - length)
             startpos -= length;
     }
 }

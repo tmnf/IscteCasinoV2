@@ -879,6 +879,8 @@ MonoBehaviour:
   arcade_price: 0
   curr_day: 0
   dayly_luck: 0
+  day_light: 0
+  lastTimeChecked: 0
   height: {x: 0, y: 0, z: 0}
   wheight: {x: 0, y: 0, z: 0}
   moneyText: {fileID: 0}
@@ -910,6 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4085ea26f2bec74483ba6082aee62c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activated: 0
 --- !u!1 &1918937601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,6 +1293,21 @@ PrefabInstance:
     - target: {fileID: 446731887572578594, guid: 2492134629646e1459a607eadc141aab,
         type: 3}
       propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 446731887572578594, guid: 2492134629646e1459a607eadc141aab,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 446731887572578594, guid: 2492134629646e1459a607eadc141aab,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 446731887572578594, guid: 2492134629646e1459a607eadc141aab,
+        type: 3}
+      propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 446731887572578595, guid: 2492134629646e1459a607eadc141aab,
@@ -1946,6 +1964,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6771340764146288089, guid: b535f7f40633c464da4cd5112032b2e7,
+        type: 3}
+      propertyPath: m_Name
+      value: mainDisplayText
+      objectReference: {fileID: 0}
     - target: {fileID: 6771340764146288090, guid: b535f7f40633c464da4cd5112032b2e7,
         type: 3}
       propertyPath: m_SizeDelta.x

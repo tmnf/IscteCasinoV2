@@ -18,7 +18,7 @@ public class Spinner : MonoBehaviour
 
     private void Start()
     {
-        
+
         playerLogic = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
         reducer = 0;
         multiplier = 0;
@@ -52,13 +52,13 @@ public class Spinner : MonoBehaviour
         {
             multiplier -= reducer;
 
-            if(multiplier < 6 && needle.colide == prizeText)
+            if (multiplier < 6 && needle.colide == prizeText)
             {
                 multiplier = 0f;
             }
         }
 
-        if(multiplier <= 0)
+        if (multiplier <= 0)
             isStoped = true;
 
         if (isStoped && !resultCheck)
