@@ -12,6 +12,7 @@ TagManager:
   - LevelChanger
   - Coin
   - MainGameLogic
+  - SoundManager
   layers:
   - Default
   - TransparentFX

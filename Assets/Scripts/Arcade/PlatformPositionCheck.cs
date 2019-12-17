@@ -2,14 +2,11 @@
 
 public class PlatformPositionCheck : MonoBehaviour
 {
-
-
     public GameObject camObj;
 
     private Camera cam;
-    float height;
-    float width;
-    // Start is called before the first frame update
+    float height, width;
+
     void Start()
     {
         camObj = GameObject.Find("Main Camera");
@@ -26,7 +23,6 @@ public class PlatformPositionCheck : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
     }
 
 
@@ -36,8 +32,7 @@ public class PlatformPositionCheck : MonoBehaviour
         {
             return true;
         }
-        else
-            return false;
 
+        return false;
     }
 }

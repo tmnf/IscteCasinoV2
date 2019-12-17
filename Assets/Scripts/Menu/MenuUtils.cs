@@ -8,10 +8,7 @@ public class MenuUtils : MonoBehaviour
     {
         SceneManager.LoadScene(LevelChangerScript.MAIN);
     }
-    public void LoadGame()
-    {
 
-    }
     public void Exit()
     {
         Application.Quit();

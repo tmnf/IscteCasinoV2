@@ -6,7 +6,7 @@ public class AssistentControl : MonoBehaviour
     public GameObject assistantDisplay;
 
     public float speed, direction;
-    private bool opened, moving, monitor;
+    private bool opened, moving;
 
     private static float closedY = -11, openY = -4;
 

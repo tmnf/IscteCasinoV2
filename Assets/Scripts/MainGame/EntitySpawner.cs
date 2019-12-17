@@ -7,7 +7,6 @@ public class EntitySpawner : MonoBehaviour
 
     public GameObject bird;
 
-    // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i != entitiesToSpawn; i++)

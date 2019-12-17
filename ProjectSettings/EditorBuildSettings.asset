@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GuessTheNumber.unity
     guid: 1a8531baaa73237438a52e1d8037c1bb
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 27aa10f443c6af146a9c8c83cfbcbc36
   m_configObjects: {}

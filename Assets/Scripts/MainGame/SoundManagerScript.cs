@@ -4,12 +4,12 @@
 public class SoundManagerScript : MonoBehaviour
 {
 
-    public static AudioClip bird1, bird2, bird3, coin, cashout, casino, arcade, sad, happy, slot;
+    public static AudioClip bird1, bird2, bird3, coin, cashout, casino, arcade, sad, happy, slot, over, sad_song;
     private static AudioSource audioSource;
 
     private void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("MainGameLogic");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("SoundManager");
 
         if (objs.Length > 1)
             Destroy(this.gameObject);
@@ -28,6 +28,8 @@ public class SoundManagerScript : MonoBehaviour
         happy = Resources.Load<AudioClip>("Sounds/robot_happy");
         sad = Resources.Load<AudioClip>("Sounds/robot_sad");
         slot = Resources.Load<AudioClip>("Sounds/slotMachine");
+        over = Resources.Load<AudioClip>("Sounds/GameOver");
+        sad_song = Resources.Load<AudioClip>("Sounds/sadSong");
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -65,6 +67,10 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "slot":
                 audioSource.PlayOneShot(slot);
+                break;
+            case "over":
+                audioSource.PlayOneShot(over);
+                audioSource.PlayOneShot(sad_song);
                 break;
         }
     }

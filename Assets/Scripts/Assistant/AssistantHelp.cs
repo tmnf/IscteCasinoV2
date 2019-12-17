@@ -12,16 +12,16 @@ public class AssistantHelp : MonoBehaviour
     public bool activated;
     void Start()
     {
-        mainGameLogic = this.gameObject.GetComponent<PlayerLogic>();
+        mainGameLogic = gameObject.GetComponent<PlayerLogic>();
         lastCheckedMoney = mainGameLogic.money;
         lastCheckedTime = Time.realtimeSinceStartup;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (activated)
         {
-            if (mainGameLogic.money < 5)
+            if (mainGameLogic.money < 10)
             {
                 SevereWarnPlayer();
             }
@@ -45,24 +45,24 @@ public class AssistantHelp : MonoBehaviour
     private void SevereWarnPlayer()
     {
         DisplayMessage("Cuidado!! Se as suas moedas chegarem a 0 voce perde o jogo..");
-        SoundManagerScript.PlaySound("sad");
     }
 
     private void WarnPlayer()
     {
         DisplayMessage("Voce tem perdido imenso dinheiro... Talvez seja uma boa ideia ir dormir e tentar amanha");
-        SoundManagerScript.PlaySound("sad");
     }
 
     private void CongratPlayer()
     {
         DisplayMessage("Parabens! Voce esta a fazer uma fortuna! Continue assim!");
-        SoundManagerScript.PlaySound("happy");
     }
 
     private void DisplayMessage(string msg)
     {
-        GameObject.Find("AssistantDisplay").GetComponent<TMPro.TextMeshProUGUI>().text = msg;
+        GameObject ad = GameObject.Find("AssistantDisplay");
+
+        if (ad != null)
+            ad.GetComponent<TMPro.TextMeshProUGUI>().text = msg;
     }
 
 

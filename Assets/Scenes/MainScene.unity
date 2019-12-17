@@ -190,8 +190,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -345,8 +345,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -598,8 +598,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -753,8 +753,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -883,9 +883,6 @@ MonoBehaviour:
   lastTimeChecked: 0
   height: {x: 0, y: 0, z: 0}
   wheight: {x: 0, y: 0, z: 0}
-  moneyText: {fileID: 0}
-  luckText: {fileID: 0}
-  currDayText: {fileID: 0}
 --- !u!4 &1838048748
 Transform:
   m_ObjectHideFlags: 0
@@ -977,8 +974,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1132,8 +1129,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1337,7 +1334,7 @@ PrefabInstance:
     - target: {fileID: 872621486867314832, guid: 30cf073f602dbb042ac8960d52c985c5,
         type: 3}
       propertyPath: orthographic size
-      value: 6.417413
+      value: 7.0398088
       objectReference: {fileID: 0}
     - target: {fileID: 872621486867314833, guid: 30cf073f602dbb042ac8960d52c985c5,
         type: 3}
@@ -1466,6 +1463,11 @@ PrefabInstance:
     - target: {fileID: 1328812756622686527, guid: 17d0ee2a509da404c8a334dc140f88d3,
         type: 3}
       propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1328812756622686527, guid: 17d0ee2a509da404c8a334dc140f88d3,
+        type: 3}
+      propertyPath: m_TagString
       value: SoundManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2010,6 +2012,21 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6771340764146288091, guid: b535f7f40633c464da4cd5112032b2e7,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771340764146288091, guid: b535f7f40633c464da4cd5112032b2e7,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771340764146288091, guid: b535f7f40633c464da4cd5112032b2e7,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6771340764570406891, guid: b535f7f40633c464da4cd5112032b2e7,
         type: 3}
       propertyPath: m_Name

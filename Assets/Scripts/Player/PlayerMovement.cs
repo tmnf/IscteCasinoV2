@@ -3,21 +3,17 @@
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float movementSpeed, jumpingForce;
+    public float movementSpeed, jumpingForce, move;
     private bool isJumping;
-    private float move;
 
     private int sceneToEnter;
 
     public Rigidbody2D rb;
     public Animator animator;
-    public GameObject textDisplay;
-
-    public GameObject camObj;
+    public GameObject textDisplay, camObj;
 
     private Camera cam;
-    float height;
-    float width;
+    private float height, width;
 
     void Start()
     {
@@ -34,22 +30,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetKeyDown("space"))
             jump();
 
         move = Input.GetAxisRaw("Horizontal") * movementSpeed;
         animator.SetFloat("movement", move / movementSpeed);
-
-
     }
 
     private void FixedUpdate()
     {
         transform.position += new Vector3(move * Time.deltaTime, 0f, 0f);
-
         checkPosition();
-
     }
 
 

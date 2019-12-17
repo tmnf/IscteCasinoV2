@@ -3,19 +3,18 @@
 public class CoinCollector : MonoBehaviour
 {
     public GameObject score;
-    private int scoreValue = 0;
+    private int scoreValue;
 
     private PlayerLogic playerAtributes;
 
     private void Start()
     {
+        scoreValue = 0;
         playerAtributes = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerAtributes = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
-
         if (collision.gameObject.tag == "Coin")
         {
             setScore();

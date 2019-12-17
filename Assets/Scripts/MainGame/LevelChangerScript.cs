@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelChangerScript : MonoBehaviour
 {
-    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4, SLOT_MACHINE = 5, SPINING_WHEEL = 6, GUESS_NUMBER = 7;
+    public static int MENU = 0, MAIN = 1, HOUSE = 2, CASINO = 3, ARCADE = 4, SLOT_MACHINE = 5, SPINING_WHEEL = 6, GUESS_NUMBER = 7, OVER = 8;
 
     public Animator animator;
     private GameObject player;
@@ -23,8 +23,6 @@ public class LevelChangerScript : MonoBehaviour
 
     void Update()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-
         switch (SceneManager.GetActiveScene().name)
         {
             case "MainScene":
@@ -83,9 +81,8 @@ public class LevelChangerScript : MonoBehaviour
 
         player = GameObject.Find("Player");
         if (player.transform.position.y < -7)
-        {
             FadeToLevel(MAIN);
-        }
+
     }
     private void HouseController()
     {
@@ -108,8 +105,6 @@ public class LevelChangerScript : MonoBehaviour
         FadeToLevel(GUESS_NUMBER);
     }
 
-
-
     public void FadeToLevel(int levelIndex)
     {
         playerAtributes = GameObject.Find("MainGameLogic").GetComponent<PlayerLogic>();
@@ -126,5 +121,4 @@ public class LevelChangerScript : MonoBehaviour
         SceneManager.LoadScene(levelToLoad);
         animator.SetTrigger("FadeIn");
     }
-
 }

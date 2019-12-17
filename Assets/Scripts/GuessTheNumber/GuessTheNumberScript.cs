@@ -89,8 +89,7 @@ public class GuessTheNumberScript : MonoBehaviour
     {
         logic.money += moedas;
 
-        for (int i = 0; i != moedas; i++)
-            SoundManagerScript.PlaySound("coin");
+        SoundManagerScript.PlaySound("coin");
 
         prizeText.GetComponent<TMPro.TextMeshProUGUI>().text = "Parabens!!! Ganhou: " + moedas + " Moedas";
         setCoins();

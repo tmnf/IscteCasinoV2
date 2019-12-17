@@ -38,7 +38,7 @@ public class GameControl : MonoBehaviour
         if (rowScript1.rowStopped || rowScript2.rowStopped || rowScript3.rowStopped)
         {
             setCoins();
-            prize.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            prize.GetComponent<TMPro.TextMeshProUGUI>().text = "Premio: ...";
             StartCoroutine("PullHandle");
         }
     }
@@ -73,7 +73,9 @@ public class GameControl : MonoBehaviour
             SoundManagerScript.PlaySound("coin");
             rowScript1.started = false;
 
+            playerLogic.money += 100;
             prize.GetComponent<TMPro.TextMeshProUGUI>().text = "Premio: 100 Moedas";
-        }
+        } else
+            prize.GetComponent<TMPro.TextMeshProUGUI>().text = "Premio: Nada...";
     }
 }

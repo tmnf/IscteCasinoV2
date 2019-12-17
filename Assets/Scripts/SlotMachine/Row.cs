@@ -28,9 +28,8 @@ public class Row : MonoBehaviour
         rowStopped = false;
         started = true;
 
-
         int i = 0;
-        int max = Random.Range(40, 100);
+        int max = Algorithms.UniformInteger(40, 100);
         for (int x = 0; x != max; x++)
         {
             GetComponent<SpriteRenderer>().sprite = getSprite(i);
@@ -42,11 +41,8 @@ public class Row : MonoBehaviour
                 if (i == 3)
                     i = 0;
             }
-            else
-            {
-                if (i == 6)
-                    i = 0;
-            }
+            else if (i == 6)
+                i = 0;
 
             yield return new WaitForSeconds(0.1f);
         }
@@ -72,7 +68,12 @@ public class Row : MonoBehaviour
         return diamond;
     }
 
-    private void onDestroy()
+    private void OnDisable()
+    {
+        OnDestroy();
+    }
+
+    private void OnDestroy()
     {
         GameControl.HandlePulled -= StartRotating;
     }

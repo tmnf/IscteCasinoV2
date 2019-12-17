@@ -6,10 +6,6 @@ public class PlayerMovementArc : MonoBehaviour
     private bool isJumping;
     private float move;
 
-    private int sceneToEnter;
-
-
-
     public Rigidbody2D rb;
     public Animator animator;
 
@@ -38,7 +34,6 @@ public class PlayerMovementArc : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position += new Vector3(move * Time.deltaTime, 0f, 0f);
-        checkPosition();
     }
 
 
@@ -49,12 +44,6 @@ public class PlayerMovementArc : MonoBehaviour
             rb.AddForce(new Vector2(0f, jumpingForce * rb.mass));
             isJumping = true;
         }
-    }
-
-    private void checkPosition()
-    {
-        if (transform.position.x > camObj.transform.position.x + (width / 2) || transform.position.x < camObj.transform.position.x - (width / 2))
-            transform.position = new Vector3(-transform.position.x, transform.position.y + 0.5f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
